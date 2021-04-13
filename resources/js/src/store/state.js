@@ -16,6 +16,7 @@ const state = {
 
     // Note: Below breakpoint state is for internal use of sidebar & navbar component
     scrollY: 0,
+    mainLayoutType: themeConfig.mainLayoutType || 'vertical',
 }
 
 export default state

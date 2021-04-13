@@ -35139,7 +35139,8 @@ var state = {
   windowWidth: null,
   theme: _themeConfig_js__WEBPACK_IMPORTED_MODULE_0__["default"].theme || 'light',
   // Note: Below breakpoint state is for internal use of sidebar & navbar component
-  scrollY: 0
+  scrollY: 0,
+  mainLayoutType: _themeConfig_js__WEBPACK_IMPORTED_MODULE_0__["default"].mainLayoutType || 'vertical'
 };
 /* harmony default export */ __webpack_exports__["default"] = (state);
 
