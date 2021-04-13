@@ -1,6 +1,8 @@
 const mix = require('laravel-mix');
 let tailwindcss = require('tailwindcss');
+const config = require('./webpack.config');
 require('dotenv').config();
+
 
 /*
  |--------------------------------------------------------------------------
@@ -14,18 +16,10 @@ require('dotenv').config();
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .webpackConfig({
-        resolve: {
-            alias: {
-                '@': path.resolve(__dirname, 'resource/js/src'),
-                '@assets': path.resolve(__dirname, 'resources/assets'),
-                '@sass': path.resolve(__dirname, 'resources/sass')
-            }
-        }
-    })
+    .webpackConfig(config)
     .sass('resources/sass/app.scss', 'public/css').options({
-        postCss: [require('autoprefixer'), require('postcss-rtl')]
-    })
+    postCss:[require('autoprefixer'), require('postcss-rtl')]
+})
     .postCss('resources/assets/css/main.css', 'public/css', [
         tailwindcss('tailwind.js'), require('postcss-rtl')()
     ])
@@ -36,6 +30,7 @@ mix.js('resources/js/app.js', 'public/js')
     .copyDirectory('node_modules/material-icons/iconfont/material-icons.css', 'public/css/material-icons/material-icons.css') // Material Icon fonts css
     .copy('node_modules/prismjs/themes/prism-tomorrow.css', 'public/css/prism-tomorrow.css') // Prism Tomorrow theme css
     .copyDirectory('resources/assets/images', 'public/images'); // Copy all images from resources to public folder
+
 
 // Change below options according to your requirement
 if (mix.inProduction()) {
