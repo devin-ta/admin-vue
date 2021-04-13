@@ -13,6 +13,14 @@ export default {
             vueAppClasses: [],
         }
     },
+    watch: {
+        '$store.state.theme'(val) {
+            this.toggleClassBody(val);
+        },
+        '$vs.rtl'(val) {
+            document.documentElement.setAttribute('dir', val ? 'rtl' : 'ltr');
+        }
+    },
     methods: {
         toggleClassBody(className) {
             if (className === 'dark') {
@@ -50,6 +58,11 @@ export default {
         document.documentElement.style.setProperty('--vh', `${vh}px`);
     },
     async created() {
+        // TODO: Set the jwt init function here
+
+        let dir = this.$vs.rtl ? 'rtl' : 'ltr';
+        document.documentElement.setAttribute('dir', dir);
+
         window.addEventListener('resize', this.handleWindowResize);
         window.addEventListener('scroll', this.handleScroll);
     },
