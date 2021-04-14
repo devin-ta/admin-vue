@@ -2,6 +2,12 @@
     <div class="layout--main" :class="[layoutTypeClass, navbarClasses, footerClasses, {'no-scroll': isAppPage}]">
         <!-- TODO: VXTour Component -->
         <!-- TODO: Customizer Component -->
+
+        <v-nav-menu
+            :navMenuItems="navMenuItems"
+            title="Vuexy"
+            parent=".layout--main"
+        />
     </div>
 </template>
 
@@ -10,10 +16,11 @@
 // TODO: VxTour plugin set up
 import themeConfig from "@/../themeConfig";
 import navMenuItems from "@/layouts/components/vertical-nav-menu/navMenuItems";
+import VNavMenu from "@/layouts/components/vertical-nav-menu/VerticalNavMenu.vue";
 
 export default {
     components: {
-
+        VNavMenu
     },
     data() {
         return {
