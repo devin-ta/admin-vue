@@ -8,6 +8,10 @@
             title="Vuexy"
             parent=".layout--main"
         />
+
+        <div id="content-area" :class="[contentAreaClass, { 'show-overlay': bodyOverlay }]">
+            <div id="content-overlay" />
+        </div>
     </div>
 </template>
 
@@ -65,6 +69,20 @@ export default {
         },
         isAppPage() {
             return this.$route.meta.no_scroll;
+        },
+        contentAreaClass() {
+            if (this.mainLayoutType === 'vertical') {
+                if (this.verticalNavMenuWidth == 'default') return 'content-area-reduced'
+                else if (this.verticalNavMenuWidth == 'reduced') return 'content-area-lg'
+                else return 'content-area-full'
+            }
+            else return 'content-area-full'
+        },
+        verticalNavMenuWidth() {
+            return this.$store.state.verticalNavMenuWidth;
+        },
+        bodyOverlay() {
+            return this.$store.state.bodyOverlay;
         }
     },
     methods: {

@@ -9,6 +9,9 @@ Vue.use(Vuesax);
 // Theme Configurations
 import '../themeConfig.js';
 
+// ACL
+import acl from './acl/acl'
+
 // Gloablly Registered Components
 import './globalComponents.js';
 
@@ -34,5 +37,6 @@ new Vue({
     router,
     store,
     i18n,
+    acl,
     render: h => h(App)
 }).$mount('#app')

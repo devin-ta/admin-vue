@@ -63,6 +63,37 @@
                         </span>
                         <!-- /Group Header -->
 
+                        <template v-else-if="!item.header">
+                            <!-- Nav-Item -->
+                            <v-nav-menu-item
+                                v-if="!item.submenu"
+                                :key="`item-${index}`"
+                                :index="index"
+                                :to="item.slug !== 'external' ? item.url : null"
+                                :href="item.slug === 'external' ? item.url : null"
+                                :icon="item.icon"
+                                :target="item.target"
+                                :isDisabled="item.isDisabled"
+                                :slug="item.slug"
+                            >
+                                <span v-show="!verticalNavMenuItemsMin" class="truncate">{{ $t(item.i18n) || item.name }}</span>
+                                <vs-chip class="ml-auto" :color="item.tagColor" v-if="item.tag && (isMouseEnter || !reduce)">{{ item.tag }}</vs-chip>
+                            </v-nav-menu-item>
+                            <!-- /Nav-Item -->
+
+                            <!-- Nav-Group -->
+                            <template v-else>
+                                <v-nav-menu-group
+                                    :key="`group-${index}`"
+                                    :openHover="openGroupHover"
+                                    :group="item"
+                                    :groupIndex="index"
+                                    :open="isGroupActive(item)"
+                                />
+                            </template>
+                            <!-- /Nav-Group -->
+                        </template>
+
                     </template>
                 </component>
                 <!-- /Menu Items -->
@@ -76,11 +107,16 @@
 <script>
 import Logo from "../Logo.vue";
 import VuePerfectScrollbar from 'vue-perfect-scrollbar';
+import VNavMenuItem from './VerticalNavMenuItem.vue';
+import VNavMenuGroup from './VerticalNavMenuGroup.vue';
+
 export default {
     name: "v-nav-menu",
     components: {
         Logo,
-        VuePerfectScrollbar
+        VuePerfectScrollbar,
+        VNavMenuItem,
+        VNavMenuGroup
     },
     props: {
         logo: {
@@ -162,10 +198,51 @@ export default {
             }
 
             return clone;
+        },
+        isGroupActive() {
+            return (item) => {
+                const path = this.$route.fullPath;
+                const routeParent = this.$route.meta ? this.$route.meta.parent : undefined;
+                let open = false;
+
+                let func = (item) => {
+                    if (item.submenu) {
+                        item.submenu.forEach((item) => {
+                            if (item.url && (path === item.url || routeParent === item.slug)) {
+                                open = true;
+                            }
+                            else if (item.submenu) {
+                                func(item);
+                            }
+                        })
+                    }
+                }
+                func(item);
+                return open;
+            }
         }
     },
     watch: {
+        '$route'() {
+            if (this.isVerticalNavMenuActive && this.showCloseButton) this.$store.commit('TOGGLE_IS_VERTICAL_NAV_MENU_ACTIVE', false);
+        },
+        reduce(val) {
+            const verticalNavMenuWidth = val ? 'reduced' : this.$store.state.windowWidth < 1200 ? 'no-nav-menu' : 'default';
+            this.$store.dispatch('updateVerticalNavMenuWidth', verticalNavMenuWidth);
 
+            setTimeout(function () {
+                window.dispatchEvent(new Event('resize'));
+            }, 100);
+        },
+        layoutType() {
+            this.setVerticalNavMenuWidth();
+        },
+        reduceButton() {
+            this.setVerticalNavMenuWidth();
+        },
+        windowWidth() {
+            this.setVerticalNavMenuWidth();
+        },
     },
     methods: {
         onMenuSwipe(event) {
@@ -237,7 +314,7 @@ export default {
         }
     },
     mounted() {
-
+        this.setVerticalNavMenuWidth();
     }
 }
 </script>
