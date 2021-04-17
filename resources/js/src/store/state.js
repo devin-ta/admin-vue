@@ -8,6 +8,7 @@
 ==========================================================================================*/
 
 import themeConfig from "@/../themeConfig.js";
+import navbarSearchAndPinList from "@/layouts/components/navbar/navbarSearchAndPinList";
 
 // *From Auth - Data will be received from auth provider
 const userDefaults = {
@@ -76,6 +77,10 @@ const state = {
 
     // User info
     AppActiveUser: getUserInfo(),
+
+    // Data for the navbar
+    navbarSearchAndPinList: navbarSearchAndPinList,
+    starredPages: navbarSearchAndPinList['pages'].data.filter((page) => page.is_bookmarked)
 }
 
 export default state

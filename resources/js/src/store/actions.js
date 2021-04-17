@@ -11,6 +11,18 @@ const actions = {
     updateVerticalNavMenuWidth({ commit }, width) {
         commit('UPDATE_VERTICAL_NAV_MENU_WIDTH', width)
     },
+
+    // The Navbar
+    arrangeStarredPagesLimited({ commit }, list) {
+        commit('ARRANGE_STARRED_PAGES_LIMITED', list)
+    },
+    arrangeStarredPagesMore({ commit }, list) {
+        commit('ARRANGE_STARRED_PAGES_MORE', list)
+    },
+    // VxAutoSuggest
+    updateStarredPage({ commit }, payload) {
+        commit('UPDATE_STARRED_PAGE', payload)
+    },
 }
 
 export default actions

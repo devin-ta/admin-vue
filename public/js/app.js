@@ -939,6 +939,154 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/layouts/components/vx-tooltip/VxTooltip.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/src/layouts/components/vx-tooltip/VxTooltip.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _assets_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @assets/utils */ "./resources/assets/utils/index.js");
+/* harmony import */ var _assets_utils_color_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @assets/utils/color.js */ "./resources/assets/utils/color.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "vx-tooltip",
+  props: {
+    title: {
+      "default": null,
+      type: [String, Number]
+    },
+    text: {
+      "default": null,
+      type: [String, Number]
+    },
+    color: {
+      "default": null,
+      type: String
+    },
+    position: {
+      "default": 'top',
+      type: String
+    },
+    delay: {
+      defalut: '0s',
+      type: [Number, String]
+    }
+  },
+  data: function data() {
+    return {
+      cords: {},
+      active: false,
+      widthx: 'auto',
+      positionx: null,
+      noneAfter: false
+    };
+  },
+  computed: {
+    style: function style() {
+      return {
+        left: this.cords.left,
+        top: this.cords.top,
+        transitionDelay: this.active ? this.delay : '0s',
+        background: _assets_utils_color_js__WEBPACK_IMPORTED_MODULE_1__["default"].getColor(this.color, 1),
+        width: this.widthx
+      };
+    }
+  },
+  methods: {
+    mouseenterx: function mouseenterx() {
+      var _this = this;
+
+      this.active = true;
+      this.$nextTick(function () {
+        _assets_utils__WEBPACK_IMPORTED_MODULE_0__["default"].insertBody(_this.$refs.vstooltip);
+
+        _this.changePosition(_this.$refs.convstooltip, _this.$refs.vstooltip);
+      });
+    },
+    mouseleavex: function mouseleavex() {
+      this.active = false;
+    },
+    changePosition: function changePosition(elxEvent, tooltip) {
+      this.noneAfter = false;
+      this.positionx = null;
+      var elx = elxEvent.closest('.con-vs-tooltip');
+      var scrollTopx = window.pageYOffset || document.documentElement.scrollTop;
+      var topx = elx.getBoundingClientRect().top + scrollTopx - tooltip.clientHeight - 4;
+      var leftx = elx.getBoundingClientRect().left - tooltip.clientWidth / 2 + elx.clientWidth / 2;
+      var widthx = elx.clientWidth;
+
+      if (this.position == 'bottom') {
+        topx = elx.getBoundingClientRect().top + scrollTopx + elx.clientHeight + 4;
+      } else if (this.position == 'left') {
+        leftx = elx.getBoundingClientRect().left - tooltip.clientWidth - 4;
+        topx = elx.getBoundingClientRect().top + scrollTopx + elx.clientHeight / 2 - tooltip.clientHeight / 2;
+
+        if (Math.sign(leftx) == -1) {
+          leftx = elx.getBoundingClientRect().left;
+          topx = elx.getBoundingClientRect().top + scrollTopx + elx.clientHeight + 4;
+          this.positionx = 'bottom';
+          this.noneAfter = true;
+        }
+      } else if (this.position == 'right') {
+        leftx = elx.getBoundingClientRect().left + elx.clientWidth + 4;
+        topx = elx.getBoundingClientRect().top + scrollTopx + elx.clientHeight / 2 - tooltip.clientHeight / 2;
+
+        if (window.innerWidth - (leftx + tooltip.clientWidth) <= 20) {
+          leftx = elx.getBoundingClientRect().left - tooltip.clientWidth / 2 - 10;
+          topx = elx.getBoundingClientRect().top + scrollTopx + elx.clientHeight + 4;
+          this.positionx = 'bottom';
+          this.noneAfter = true;
+        }
+      }
+
+      this.cords = {
+        left: "".concat(leftx, "px"),
+        top: "".concat(topx, "px"),
+        width: "".concat(widthx, "px")
+      };
+    },
+    destroy: function destroy() {
+      var _this2 = this;
+
+      this.active = false;
+      this.$nextTick(function () {
+        if (_this2.active) {
+          _assets_utils__WEBPACK_IMPORTED_MODULE_0__["default"].removeBody(_this2.$refs.vstooltip);
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-runtime/core-js/object/keys.js":
 /*!***********************************************************!*\
   !*** ./node_modules/babel-runtime/core-js/object/keys.js ***!
@@ -24478,6 +24626,73 @@ var render = function() {
     { class: _vm.vueAppClasses, attrs: { id: "app" } },
     [_c("router-view", { on: { setAppClasses: _vm.setAppClasses } })],
     1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/layouts/components/vx-tooltip/VxTooltip.vue?vue&type=template&id=1fb843f8&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/src/layouts/components/vx-tooltip/VxTooltip.vue?vue&type=template&id=1fb843f8&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      ref: "convstooltip",
+      staticClass: "con-vs-tooltip",
+      on: {
+        mouseleave: _vm.mouseleavex,
+        mouseenter: _vm.mouseenterx,
+        mouseup: _vm.destroy
+      }
+    },
+    [
+      _c("transition", { attrs: { name: "tooltip-fade" } }, [
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.active,
+                expression: "active"
+              }
+            ],
+            ref: "vstooltip",
+            staticClass: "vs-tooltip",
+            class: [
+              "vs-tooltip-" + (_vm.positionx || _vm.position),
+              "vs-tooltip-" + _vm.color,
+              { "after-none": _vm.noneAfter }
+            ],
+            style: _vm.style
+          },
+          [
+            _vm.title ? _c("h4", [_vm._v(_vm._s(_vm.title))]) : _vm._e(),
+            _vm._v("\n            " + _vm._s(_vm.text) + "\n        ")
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _vm._t("default")
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -57865,6 +58080,17 @@ module.exports = "/fonts/feather.woff?3d2fa2e544004aef2ea641698b715af6";
 
 /***/ }),
 
+/***/ "./resources/assets/images/portrait/small/avatar-s-10.jpg":
+/*!****************************************************************!*\
+  !*** ./resources/assets/images/portrait/small/avatar-s-10.jpg ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/avatar-s-10.jpg?c7eebd6b707086d0063fc288f3905042";
+
+/***/ }),
+
 /***/ "./resources/assets/images/portrait/small/avatar-s-11.jpg":
 /*!****************************************************************!*\
   !*** ./resources/assets/images/portrait/small/avatar-s-11.jpg ***!
@@ -57873,6 +58099,308 @@ module.exports = "/fonts/feather.woff?3d2fa2e544004aef2ea641698b715af6";
 /***/ (function(module, exports) {
 
 module.exports = "/images/avatar-s-11.jpg?1a620230b75dd161d37ad2d21948e9cb";
+
+/***/ }),
+
+/***/ "./resources/assets/images/portrait/small/avatar-s-15.jpg":
+/*!****************************************************************!*\
+  !*** ./resources/assets/images/portrait/small/avatar-s-15.jpg ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/avatar-s-15.jpg?f537955eba3fe0cedf2b60b653aa5a91";
+
+/***/ }),
+
+/***/ "./resources/assets/images/portrait/small/avatar-s-2.jpg":
+/*!***************************************************************!*\
+  !*** ./resources/assets/images/portrait/small/avatar-s-2.jpg ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/avatar-s-2.jpg?fc2135e130e396cfc30cec9b6e9861af";
+
+/***/ }),
+
+/***/ "./resources/assets/images/portrait/small/avatar-s-20.jpg":
+/*!****************************************************************!*\
+  !*** ./resources/assets/images/portrait/small/avatar-s-20.jpg ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/avatar-s-20.jpg?e8861d8caf03a6a986fd7a498fb18d87";
+
+/***/ }),
+
+/***/ "./resources/assets/images/portrait/small/avatar-s-23.jpg":
+/*!****************************************************************!*\
+  !*** ./resources/assets/images/portrait/small/avatar-s-23.jpg ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/avatar-s-23.jpg?f7dd6b8f2eed3d37465eed20cc6fc3dd";
+
+/***/ }),
+
+/***/ "./resources/assets/images/portrait/small/avatar-s-24.jpg":
+/*!****************************************************************!*\
+  !*** ./resources/assets/images/portrait/small/avatar-s-24.jpg ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/avatar-s-24.jpg?e9860ff62971f4dca6eec8ccadad35ad";
+
+/***/ }),
+
+/***/ "./resources/assets/images/portrait/small/avatar-s-25.jpg":
+/*!****************************************************************!*\
+  !*** ./resources/assets/images/portrait/small/avatar-s-25.jpg ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/avatar-s-25.jpg?eb6156c0ec9c829985c1b0a6e1ff2bc1";
+
+/***/ }),
+
+/***/ "./resources/assets/images/portrait/small/avatar-s-4.jpg":
+/*!***************************************************************!*\
+  !*** ./resources/assets/images/portrait/small/avatar-s-4.jpg ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/avatar-s-4.jpg?6a665e7ccedce6cfb58f17aafae574ef";
+
+/***/ }),
+
+/***/ "./resources/assets/images/portrait/small/avatar-s-5.jpg":
+/*!***************************************************************!*\
+  !*** ./resources/assets/images/portrait/small/avatar-s-5.jpg ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/avatar-s-5.jpg?99691e543d9e33cf745f6ac56f5800b8";
+
+/***/ }),
+
+/***/ "./resources/assets/images/portrait/small/avatar-s-7.jpg":
+/*!***************************************************************!*\
+  !*** ./resources/assets/images/portrait/small/avatar-s-7.jpg ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/avatar-s-7.jpg?b00fd0f744875b2f52e7cdcb863246e9";
+
+/***/ }),
+
+/***/ "./resources/assets/utils/color.js":
+/*!*****************************************!*\
+  !*** ./resources/assets/utils/color.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  darken: function darken(color, percent) {
+    var f = color.split(","),
+        t = percent < 0 ? 0 : 255,
+        p = percent < 0 ? percent * -1 : percent,
+        R = parseInt(f[0].slice(4)),
+        G = parseInt(f[1]),
+        B = parseInt(f[2]);
+    return "rgb(" + (Math.round((t - R) * p) + R) + "," + (Math.round((t - G) * p) + G) + "," + (Math.round((t - B) * p) + B) + ")";
+  },
+  getColor: function getColor(colorx) {
+    var alphax = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+    var defaultx = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+    // change color hex to RGB
+    if (/^[#]/.test(colorx)) {
+      var c = this.hexToRgb(colorx);
+
+      if (alphax == 1) {
+        colorx = "rgb(".concat(c.r, ",").concat(c.g, ",").concat(c.b, ")");
+      } else {
+        colorx = "rgba(".concat(c.r, ",").concat(c.g, ",").concat(c.b, ",").concat(alphax, ")");
+      }
+    } else if (/^rgba/.test(colorx)) {
+      if (colorx.search(/.([0-9]\))$/) == -1 && !defaultx) {
+        colorx = colorx.replace(/.?([0-9]\))$/, "".concat(alphax, ")"));
+      }
+    } else if (/^(rgb)/.test(colorx)) {
+      // change rgb and rgba
+      if (alphax != 1) {
+        colorx = colorx.replace(/^(rgb)/, "rgba");
+        colorx = colorx.replace(/\)$/, ",".concat(alphax, ")"));
+      }
+    }
+
+    return colorx;
+  },
+  isColor: function isColor(colorx) {
+    var vscolors = ['primary', 'secondary', 'success', 'danger', 'warning', 'dark', 'light'];
+    return vscolors.includes(colorx);
+  },
+  RandomColor: function RandomColor() {
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    return "rgb(".concat(getRandomInt(0, 255), ",").concat(getRandomInt(0, 255), ",").concat(getRandomInt(0, 255), ")");
+  },
+  rColor: function rColor(colorx) {
+    var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+    if (/^[#]/.test(colorx)) {
+      var c = this.hexToRgb(colorx);
+      colorx = "rgba(".concat(c.r, ",").concat(c.g, ",").concat(c.b, ",").concat(opacity, ")");
+    } else if (/^[rgb]/.test(colorx)) {
+      var colorSplit = colorx.split(')')[0];
+
+      if (!/^[rgba]/.test(colorx)) {
+        colorSplit.replace('rgb', 'rgba');
+        colorSplit += ",".concat(opacity, ")");
+      } else {
+        // colorSplit.replace('rgb','rgba')
+        colorSplit += ")";
+      }
+
+      colorx = colorSplit;
+    }
+
+    var vscolors = ['primary', 'success', 'danger', 'warning', 'dark'];
+
+    if (colorx) {
+      if (/[#()]/.test(colorx)) {
+        return colorx;
+      } else {
+        if (vscolors.includes(colorx)) {
+          return "rgba(var(--".concat(colorx, "),").concat(opacity, ")");
+        } else {
+          return "rgba(var(--primary),".concat(opacity, ")");
+        }
+      }
+    } else {
+      return "rgba(var(--primary),".concat(opacity, ")");
+    }
+  },
+  contrastColor: function contrastColor(elementx) {
+    var c = elementx;
+
+    if (/[#]/g.test(elementx)) {
+      var rgbx = this.hexToRgb(elementx);
+      c = "rgb(".concat(rgbx.r, ",").concat(rgbx.g, ",").concat(rgbx.b, ")");
+    }
+
+    var rgb = c.replace(/^(rgb|rgba)\(/, '').replace(/\)$/, '').replace(/\s/g, '').split(',');
+    var yiq = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
+
+    if (yiq >= 128) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+  setCssVariable: function setCssVariable(propertyName, value) {
+    if (typeof window !== 'undefined') {
+      document.documentElement.style.setProperty(propertyName, value);
+    }
+  },
+  hexToRgb: function hexToRgb(hex) {
+    // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+      return r + r + g + g + b + b;
+    });
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  },
+  getVariable: function getVariable(styles, propertyName) {
+    return String(styles.getPropertyValue(propertyName)).trim();
+  },
+  changeColor: function changeColor(colorInicial) {
+    var colores = ['primary', 'success', 'danger', 'warning', 'dark'];
+    var colorx;
+
+    if (colores.includes(colorInicial)) {
+      var style = getComputedStyle(document.documentElement);
+      colorx = this.getVariable(style, '--' + colorInicial);
+    } else {
+      if (/[rgb()]/g.test(colorInicial)) {
+        colorx = colorInicial.replace(/[rgb()]/g, '');
+      } else if (/[#]/g.test(colorInicial)) {
+        var rgbx = this.hexToRgb(colorInicial);
+        colorx = "".concat(rgbx.r, ",").concat(rgbx.g, ",").concat(rgbx.b);
+      } else {
+        colorx = '--' + colorInicial;
+      }
+    }
+
+    return colorx; // this.setCssVariable('--'+clave,colorx)
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/assets/utils/index.js":
+/*!*****************************************!*\
+  !*** ./resources/assets/utils/index.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  insertBody: function insertBody(elx) {
+    document.body.insertBefore(elx, document.body.firstChild);
+  },
+  removeBody: function removeBody(element) {
+    var bodyx = document.body;
+    bodyx.removeChild(element);
+  },
+  changePosition: function changePosition(elx, content, conditional) {
+    var topx = 0;
+    var leftx = 0;
+    var widthx = 0;
+    var scrollTopx = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (elx.getBoundingClientRect().top + 300 >= window.innerHeight) {
+      setTimeout(function () {
+        if (conditional) {
+          topx = elx.getBoundingClientRect().top - content.clientHeight + scrollTopx;
+        } else {
+          topx = elx.getBoundingClientRect().top - content.clientHeight + elx.clientHeight + scrollTopx;
+        }
+      }, 1);
+    } else {
+      topx = conditional ? elx.getBoundingClientRect().top + elx.clientHeight + scrollTopx + 5 : elx.getBoundingClientRect().top + scrollTopx;
+    }
+
+    leftx = elx.getBoundingClientRect().left;
+    widthx = elx.offsetWidth;
+    var cords = {
+      left: "".concat(leftx, "px"),
+      top: "".concat(topx, "px"),
+      width: "".concat(widthx, "px")
+    };
+    return cords;
+  }
+});
 
 /***/ }),
 
@@ -58074,9 +58602,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_FeatherIcon_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/FeatherIcon.vue */ "./resources/js/src/components/FeatherIcon.vue");
+/* harmony import */ var _layouts_components_vx_tooltip_VxTooltip__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./layouts/components/vx-tooltip/VxTooltip */ "./resources/js/src/layouts/components/vx-tooltip/VxTooltip.vue");
+
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(_components_FeatherIcon_vue__WEBPACK_IMPORTED_MODULE_1__["default"].name, _components_FeatherIcon_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(_layouts_components_vx_tooltip_VxTooltip__WEBPACK_IMPORTED_MODULE_2__["default"].name, _layouts_components_vx_tooltip_VxTooltip__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
 /***/ }),
 
@@ -58468,6 +58999,704 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./resources/js/src/layouts/components/navbar/navbarSearchAndPinList.js":
+/*!******************************************************************************!*\
+  !*** ./resources/js/src/layouts/components/navbar/navbarSearchAndPinList.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  pages: {
+    key: "title",
+    data: [// DASHBOARDS
+    {
+      title: "Analytics Dashboard",
+      url: "/dashboard/analytics",
+      icon: "HomeIcon",
+      is_bookmarked: false
+    }, {
+      title: "eCommerce Dashboard",
+      url: "/dashboard/ecommerce",
+      icon: "HomeIcon",
+      is_bookmarked: false
+    }, // APPS
+    {
+      title: "Todo",
+      url: "/apps/todo",
+      icon: "CheckSquareIcon",
+      is_bookmarked: true
+    }, {
+      title: "Chat",
+      url: "/apps/chat",
+      icon: "MessageSquareIcon",
+      is_bookmarked: true
+    }, {
+      title: "Email",
+      url: "/apps/email",
+      icon: "MailIcon",
+      is_bookmarked: true
+    }, {
+      title: "Calendar",
+      url: "/apps/calendar/vue-simple-calendar",
+      icon: "CalendarIcon",
+      is_bookmarked: true
+    }, {
+      title: "E-Commerce Shop",
+      url: "/apps/eCommerce/shop",
+      icon: "ShoppingCartIcon",
+      is_bookmarked: true
+    }, {
+      title: "E-Commerce Item Detail",
+      url: "/apps/eCommerce/item",
+      icon: "SmartphoneIcon",
+      is_bookmarked: false
+    }, {
+      title: "E-Commerce Wish List",
+      url: "/apps/eCommerce/wish-list",
+      icon: "HeartIcon",
+      is_bookmarked: false
+    }, {
+      title: "E-Commerce Checkout",
+      url: "/apps/eCommerce/checkout",
+      icon: "CreditCardIcon",
+      is_bookmarked: false
+    }, {
+      title: "User List",
+      url: "/apps/user/user-list",
+      icon: "ListIcon",
+      is_bookmarked: false
+    }, {
+      title: "User View",
+      url: "/apps/user/user-view/268",
+      icon: "UserIcon",
+      is_bookmarked: false
+    }, {
+      title: "User Edit",
+      url: "/apps/user/user-edit/268",
+      icon: "EditIcon",
+      is_bookmarked: false
+    }, // UI ELEMENTS
+    {
+      title: "Data List - List View",
+      url: "/ui-elements/data-list/list-view",
+      icon: "ListIcon",
+      is_bookmarked: false
+    }, {
+      title: "Data List - Thumb View",
+      url: "/ui-elements/data-list/thumb-view",
+      icon: "ImageIcon",
+      is_bookmarked: false
+    }, {
+      title: "Vuesax Grid",
+      url: "/ui-elements/grid/vuesax",
+      icon: "LayoutIcon",
+      is_bookmarked: false
+    }, {
+      title: "Tailwind Grid",
+      url: "/ui-elements/grid/tailwind",
+      icon: "LayoutIcon",
+      is_bookmarked: false
+    }, {
+      title: "Colors",
+      url: "/ui-elements/colors",
+      icon: "DropletIcon",
+      is_bookmarked: false
+    }, {
+      title: "Basic Cards",
+      url: "/ui-elements/card/basic",
+      icon: "CreditCardIcon",
+      is_bookmarked: false
+    }, {
+      title: "Statistics Card",
+      url: "/ui-elements/card/statistics",
+      icon: "CreditCardIcon",
+      is_bookmarked: false
+    }, {
+      title: "Analytics Cards",
+      url: "/ui-elements/card/analytics",
+      icon: "CreditCardIcon",
+      is_bookmarked: false
+    }, {
+      title: "Card Actions",
+      url: "/ui-elements/card/card-actions",
+      icon: "CreditCardIcon",
+      is_bookmarked: false
+    }, {
+      title: "Card Colors",
+      url: "/ui-elements/card/card-colors",
+      icon: "FeatherIcon",
+      is_bookmarked: false
+    }, {
+      title: "Table",
+      url: "/ui-elements/table",
+      icon: "GridIcon",
+      is_bookmarked: false
+    }, {
+      title: "agGrid Table",
+      url: "/ui-elements/ag-grid-table",
+      icon: "GridIcon",
+      is_bookmarked: false
+    }, {
+      title: "Alert Component",
+      url: "/components/alert",
+      icon: "AlertTriangleIcon",
+      is_bookmarked: false
+    }, {
+      title: "Avatar Component",
+      url: "/components/avatar",
+      icon: "UserIcon",
+      is_bookmarked: false
+    }, {
+      title: "Breadcrumb Component",
+      url: "/components/breadcrumb",
+      icon: "NavigationIcon",
+      is_bookmarked: false
+    }, {
+      title: "Button Component",
+      url: "/components/button",
+      icon: "BoldIcon",
+      is_bookmarked: false
+    }, {
+      title: "Button Group Component",
+      url: "/components/button-group",
+      icon: "BoldIcon",
+      is_bookmarked: false
+    }, {
+      title: "Chip Component",
+      url: "/components/chip",
+      icon: "TagIcon",
+      is_bookmarked: false
+    }, {
+      title: "Collapse Component",
+      url: "/components/collapse",
+      icon: "PlusIcon",
+      is_bookmarked: false
+    }, {
+      title: "Dialogs Component",
+      url: "/components/dialogs",
+      icon: "CopyIcon",
+      is_bookmarked: false
+    }, {
+      title: "Divider Component",
+      url: "/components/divider",
+      icon: "MinusIcon",
+      is_bookmarked: false
+    }, {
+      title: "DropDown Component",
+      url: "/components/dropdown",
+      icon: "MoreHorizontalIcon",
+      is_bookmarked: false
+    }, {
+      title: "List Component",
+      url: "/components/list",
+      icon: "ListIcon",
+      is_bookmarked: false
+    }, {
+      title: "Loading Component",
+      url: "/components/loading",
+      icon: "LoaderIcon",
+      is_bookmarked: false
+    }, {
+      title: "Navbar Component",
+      url: "/components/navbar",
+      icon: "CreditCardIcon",
+      is_bookmarked: false
+    }, {
+      title: "Notifications Component",
+      url: "/components/notifications",
+      icon: "BellIcon",
+      is_bookmarked: false
+    }, {
+      title: "Pagination Component",
+      url: "/components/pagination",
+      icon: "ChevronsRightIcon",
+      is_bookmarked: false
+    }, {
+      title: "Popup Component",
+      url: "/components/popup",
+      icon: "CopyIcon",
+      is_bookmarked: false
+    }, {
+      title: "Progress Component",
+      url: "/components/progress",
+      icon: "SlidersIcon",
+      is_bookmarked: false
+    }, {
+      title: "Sidebar Component",
+      url: "/components/sidebar",
+      icon: "SidebarIcon",
+      is_bookmarked: false
+    }, {
+      title: "Slider Component",
+      url: "/components/slider",
+      icon: "SlidersIcon",
+      is_bookmarked: false
+    }, {
+      title: "Tabs Component",
+      url: "/components/tabs",
+      icon: "CreditCardIcon",
+      is_bookmarked: false
+    }, {
+      title: "Tooltip Component",
+      url: "/components/tooltip",
+      icon: "AlertCircleIcon",
+      is_bookmarked: false
+    }, {
+      title: "Upload Component",
+      url: "/components/upload",
+      icon: "UploadIcon",
+      is_bookmarked: false
+    }, // FORMS
+    // {title: "Select Form Element",       url: "/forms/form-elements/select",         icon: "CheckIcon",          is_bookmarked: false},
+    {
+      title: "Switch Form Element",
+      url: "/forms/form-elements/switch",
+      icon: "ToggleLeftIcon",
+      is_bookmarked: false
+    }, {
+      title: "Checkbox Form Element",
+      url: "/forms/form-elements/checkbox",
+      icon: "CheckSquareIcon",
+      is_bookmarked: false
+    }, {
+      title: "Radio Form Element",
+      url: "/forms/form-elements/radio",
+      icon: "DiscIcon",
+      is_bookmarked: false
+    }, {
+      title: "Input Form Element",
+      url: "/forms/form-elements/input",
+      icon: "TypeIcon",
+      is_bookmarked: false
+    }, {
+      title: "Number Input Form Element",
+      url: "/forms/form-elements/number-input",
+      icon: "TypeIcon",
+      is_bookmarked: false
+    }, {
+      title: "Textarea Form Element",
+      url: "/forms/form-elements/textarea",
+      icon: "TypeIcon",
+      is_bookmarked: false
+    }, {
+      title: "Form Layouts",
+      url: "/forms/form-layouts",
+      icon: "LayoutIcon",
+      is_bookmarked: false
+    }, {
+      title: "Form Wizard",
+      url: "/forms/form-wizard",
+      icon: "GitCommitIcon",
+      is_bookmarked: false
+    }, {
+      title: "Form Validation",
+      url: "/forms/form-validation",
+      icon: "CheckSquareIcon",
+      is_bookmarked: false
+    }, {
+      title: "Form Input Group",
+      url: "/forms/form-input-group",
+      icon: "MenuIcon",
+      is_bookmarked: false
+    }, // PAGES
+    {
+      title: "Login Page",
+      url: "/pages/login",
+      icon: "LockIcon",
+      is_bookmarked: false
+    }, {
+      title: "Register Page",
+      url: "/pages/register",
+      icon: "UserPlusIcon",
+      is_bookmarked: false
+    }, {
+      title: "Forgot Password Page",
+      url: "/pages/forgot-password",
+      icon: "HelpCircleIcon",
+      is_bookmarked: false
+    }, {
+      title: "Reset Password Page",
+      url: "/pages/reset-password",
+      icon: "UnlockIcon",
+      is_bookmarked: false
+    }, {
+      title: "Lock Screen Page",
+      url: "/pages/lock-screen",
+      icon: "LockIcon",
+      is_bookmarked: false
+    }, {
+      title: "Coming Soon Page",
+      url: "/pages/comingsoon",
+      icon: "ClockIcon",
+      is_bookmarked: false
+    }, {
+      title: "404 Page",
+      url: "/pages/error-404",
+      icon: "MonitorIcon",
+      is_bookmarked: false
+    }, {
+      title: "500 Page",
+      url: "/pages/error-500",
+      icon: "MonitorIcon",
+      is_bookmarked: false
+    }, {
+      title: "Not Authorized Page",
+      url: "/pages/not-authorized",
+      icon: "XCircleIcon",
+      is_bookmarked: false
+    }, {
+      title: "Maintenance Page",
+      url: "/pages/maintenance",
+      icon: "MonitorIcon",
+      is_bookmarked: false
+    }, {
+      title: "Profile Page",
+      url: "/pages/profile",
+      icon: "UserIcon",
+      is_bookmarked: false
+    }, {
+      title: "User Settings",
+      url: "/pages/user-settings",
+      icon: "SettingsIcon",
+      is_bookmarked: false
+    }, {
+      title: "FAQ Page",
+      url: "/pages/faq",
+      icon: "HelpCircleIcon",
+      is_bookmarked: false
+    }, {
+      title: "KnowledgeBase Page",
+      url: "/pages/knowledge-base",
+      icon: "BookIcon",
+      is_bookmarked: false
+    }, {
+      title: "Search Page",
+      url: "/pages/search",
+      icon: "SearchIcon",
+      is_bookmarked: false
+    }, {
+      title: "Invoice Page",
+      url: "/pages/invoice",
+      icon: "FileIcon",
+      is_bookmarked: false
+    }, // CHARTS & MAPS
+    {
+      title: "Apex Charts",
+      url: "/charts-and-maps/charts/apex-charts",
+      icon: "PieChartIcon",
+      is_bookmarked: false
+    }, {
+      title: "chartjs",
+      url: "/charts-and-maps/charts/chartjs",
+      icon: "PieChartIcon",
+      is_bookmarked: false
+    }, {
+      title: "echarts",
+      url: "/charts-and-maps/charts/echarts",
+      icon: "PieChartIcon",
+      is_bookmarked: false
+    }, {
+      title: "Google Map",
+      url: "/charts-and-maps/maps/google-map",
+      icon: "MapIcon",
+      is_bookmarked: false
+    }, // EXTENSIONS
+    {
+      title: "Select Extension",
+      url: "/extensions/select",
+      icon: "CheckIcon",
+      is_bookmarked: false
+    }, {
+      title: "Quill Editor",
+      url: "/extensions/quill-editor",
+      icon: "EditIcon",
+      is_bookmarked: false
+    }, {
+      title: "Drag & Drop",
+      url: "/extensions/drag-and-drop",
+      icon: "CopyIcon",
+      is_bookmarked: false
+    }, {
+      title: "Datepicker",
+      url: "/extensions/datepicker",
+      icon: "CalendarIcon",
+      is_bookmarked: false
+    }, {
+      title: "Datetime Picker",
+      url: "/extensions/datetime-picker",
+      icon: "ClockIcon",
+      is_bookmarked: false
+    }, {
+      title: "Access Control",
+      url: "/extensions/access-control",
+      icon: "LockIcon",
+      is_bookmarked: false
+    }, {
+      title: "I18n",
+      url: "/extensions/i18n",
+      icon: "GlobeIcon",
+      is_bookmarked: false
+    }, {
+      title: "Carousel",
+      url: "/extensions/carousel",
+      icon: "LayersIcon",
+      is_bookmarked: false
+    }, {
+      title: "Clipboard",
+      url: "/extensions/clipboard",
+      icon: "CopyIcon",
+      is_bookmarked: false
+    }, {
+      title: "Context Menu",
+      url: "/extensions/context-menu",
+      icon: "MoreHorizontalIcon",
+      is_bookmarked: false
+    }, {
+      title: "Star Rating",
+      url: "/extensions/star-ratings",
+      icon: "StarIcon",
+      is_bookmarked: false
+    }, {
+      title: "Autocomplete",
+      url: "/extensions/autocomplete",
+      icon: "Edit3Icon",
+      is_bookmarked: false
+    }, {
+      title: "Tree",
+      url: "/extensions/tree",
+      icon: "GitPullRequestIcon",
+      is_bookmarked: false
+    }, {
+      title: "Import",
+      url: "/import-export/import",
+      icon: "FileTextIcon",
+      is_bookmarked: false
+    }, {
+      title: "Export",
+      url: "/import-export/export",
+      icon: "ExternalLinkIcon",
+      is_bookmarked: false
+    }, {
+      title: "Export Selected",
+      url: "/import-export/export-selected",
+      icon: "ExternalLinkIcon",
+      is_bookmarked: false
+    }]
+  },
+  files: {
+    key: "file_name",
+    data: [{
+      file_name: "Joe's CV",
+      from: "Stacy Watson",
+      file_ext: "doc",
+      size: "1.7 mb"
+    }, {
+      file_name: "Passport Image",
+      from: "Ben Sinitiere",
+      file_ext: "jpg",
+      size: " 52 kb"
+    }, {
+      file_name: "Questions",
+      from: "Charleen Patti",
+      file_ext: "doc",
+      size: "1.5 gb"
+    }, {
+      file_name: "Parenting Guide",
+      from: "Doyle Blatteau",
+      file_ext: "doc",
+      size: "2.3 mb"
+    }, {
+      file_name: "Class Notes",
+      from: "Gwen Greenlow",
+      file_ext: "doc",
+      size: " 30 kb"
+    }, {
+      file_name: "Class Attendance",
+      from: "Tom Alred",
+      file_ext: "xls",
+      size: "52 mb"
+    }, {
+      file_name: "Company Salary",
+      from: "Nellie Dezan",
+      file_ext: "xls",
+      size: "29 mb"
+    }, {
+      file_name: "Company Logo",
+      from: "Steve Sheldon",
+      file_ext: "jpg",
+      size: "1.3 mb"
+    }, {
+      file_name: "Crime Rates",
+      from: "Sherlock Holmes",
+      file_ext: "xls",
+      size: "37 kb"
+    }, {
+      file_name: "Ulysses",
+      from: "Theresia Wrenne",
+      file_ext: "pdf",
+      size: "7.2 mb"
+    }, {
+      file_name: "War and Peace",
+      from: "Goldie Highnote",
+      file_ext: "pdf",
+      size: "10.5 mb"
+    }, {
+      file_name: "Vedas",
+      from: "Ajay Patel",
+      file_ext: "pdf",
+      size: "8.3 mb"
+    }, {
+      file_name: "The Trial",
+      from: "Sirena Linkert",
+      file_ext: "pdf",
+      size: "1.5 mb"
+    }]
+  },
+  contacts: {
+    key: "name",
+    data: [{
+      img: __webpack_require__(/*! @assets/images/portrait/small/avatar-s-4.jpg */ "./resources/assets/images/portrait/small/avatar-s-4.jpg"),
+      name: "Rena Brant",
+      email: "nephrod@preany.co.uk",
+      time: "21/05/2019"
+    }, {
+      img: __webpack_require__(/*! @assets/images/portrait/small/avatar-s-2.jpg */ "./resources/assets/images/portrait/small/avatar-s-2.jpg"),
+      name: "Mariano Packard",
+      email: "seek@sparaxis.org",
+      time: "14/01/2018"
+    }, {
+      img: __webpack_require__(/*! @assets/images/portrait/small/avatar-s-24.jpg */ "./resources/assets/images/portrait/small/avatar-s-24.jpg"),
+      name: "Risa Montufar",
+      email: "vagary@unblist.org",
+      time: "10/08/2019"
+    }, {
+      img: __webpack_require__(/*! @assets/images/portrait/small/avatar-s-15.jpg */ "./resources/assets/images/portrait/small/avatar-s-15.jpg"),
+      name: "Maragaret Cimo",
+      email: "designed@insanely.net",
+      time: "01/12/2019"
+    }, {
+      img: __webpack_require__(/*! @assets/images/portrait/small/avatar-s-7.jpg */ "./resources/assets/images/portrait/small/avatar-s-7.jpg"),
+      name: "Jona Prattis",
+      email: "unwieldable@unblist.org",
+      time: "21/05/2019"
+    }, {
+      img: __webpack_require__(/*! @assets/images/portrait/small/avatar-s-5.jpg */ "./resources/assets/images/portrait/small/avatar-s-5.jpg"),
+      name: "Edmond Chicon",
+      email: "museist@anaphyte.co.uk",
+      time: "15/11/2019"
+    }, {
+      img: __webpack_require__(/*! @assets/images/portrait/small/avatar-s-25.jpg */ "./resources/assets/images/portrait/small/avatar-s-25.jpg"),
+      name: "Abbey Darden",
+      email: "astema@defectively.co.uk",
+      time: "07/05/2019"
+    }, {
+      img: __webpack_require__(/*! @assets/images/portrait/small/avatar-s-10.jpg */ "./resources/assets/images/portrait/small/avatar-s-10.jpg"),
+      name: "Seema Moallankamp",
+      email: "fernando@storkish.co.uk",
+      time: "13/08/2017"
+    }, {
+      img: __webpack_require__(/*! @assets/images/portrait/small/avatar-s-2.jpg */ "./resources/assets/images/portrait/small/avatar-s-2.jpg"),
+      name: "Charleen Warmington",
+      email: "furphy@cannibal.net",
+      time: "11/08/1891"
+    }, {
+      img: __webpack_require__(/*! @assets/images/portrait/small/avatar-s-25.jpg */ "./resources/assets/images/portrait/small/avatar-s-25.jpg"),
+      name: "Geri Linch",
+      email: "insignia@markab.org",
+      time: "18/01/2015"
+    }, {
+      img: __webpack_require__(/*! @assets/images/portrait/small/avatar-s-23.jpg */ "./resources/assets/images/portrait/small/avatar-s-23.jpg"),
+      name: "Shellie Muster",
+      email: "maxillary@equalize.co.uk",
+      time: "26/07/2019"
+    }, {
+      img: __webpack_require__(/*! @assets/images/portrait/small/avatar-s-20.jpg */ "./resources/assets/images/portrait/small/avatar-s-20.jpg"),
+      name: "Jesenia Vanbramer",
+      email: "hypotony@phonetist.net",
+      time: "12/09/2017"
+    }, {
+      img: __webpack_require__(/*! @assets/images/portrait/small/avatar-s-23.jpg */ "./resources/assets/images/portrait/small/avatar-s-23.jpg"),
+      name: "Mardell Channey",
+      email: "peseta@myrica.com",
+      time: "11/11/2019"
+    }]
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/src/layouts/components/vx-tooltip/VxTooltip.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/src/layouts/components/vx-tooltip/VxTooltip.vue ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _VxTooltip_vue_vue_type_template_id_1fb843f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VxTooltip.vue?vue&type=template&id=1fb843f8&scoped=true& */ "./resources/js/src/layouts/components/vx-tooltip/VxTooltip.vue?vue&type=template&id=1fb843f8&scoped=true&");
+/* harmony import */ var _VxTooltip_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VxTooltip.vue?vue&type=script&lang=js& */ "./resources/js/src/layouts/components/vx-tooltip/VxTooltip.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _VxTooltip_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _VxTooltip_vue_vue_type_template_id_1fb843f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _VxTooltip_vue_vue_type_template_id_1fb843f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "1fb843f8",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/src/layouts/components/vx-tooltip/VxTooltip.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/src/layouts/components/vx-tooltip/VxTooltip.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/src/layouts/components/vx-tooltip/VxTooltip.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VxTooltip_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./VxTooltip.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/layouts/components/vx-tooltip/VxTooltip.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VxTooltip_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/src/layouts/components/vx-tooltip/VxTooltip.vue?vue&type=template&id=1fb843f8&scoped=true&":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/src/layouts/components/vx-tooltip/VxTooltip.vue?vue&type=template&id=1fb843f8&scoped=true& ***!
+  \*****************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VxTooltip_vue_vue_type_template_id_1fb843f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./VxTooltip.vue?vue&type=template&id=1fb843f8&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/layouts/components/vx-tooltip/VxTooltip.vue?vue&type=template&id=1fb843f8&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VxTooltip_vue_vue_type_template_id_1fb843f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VxTooltip_vue_vue_type_template_id_1fb843f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/src/main.js":
 /*!**********************************!*\
   !*** ./resources/js/src/main.js ***!
@@ -58602,6 +59831,20 @@ var actions = {
   updateVerticalNavMenuWidth: function updateVerticalNavMenuWidth(_ref, width) {
     var commit = _ref.commit;
     commit('UPDATE_VERTICAL_NAV_MENU_WIDTH', width);
+  },
+  // The Navbar
+  arrangeStarredPagesLimited: function arrangeStarredPagesLimited(_ref2, list) {
+    var commit = _ref2.commit;
+    commit('ARRANGE_STARRED_PAGES_LIMITED', list);
+  },
+  arrangeStarredPagesMore: function arrangeStarredPagesMore(_ref3, list) {
+    var commit = _ref3.commit;
+    commit('ARRANGE_STARRED_PAGES_MORE', list);
+  },
+  // VxAutoSuggest
+  updateStarredPage: function updateStarredPage(_ref4, payload) {
+    var commit = _ref4.commit;
+    commit('UPDATE_STARRED_PAGE', payload);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (actions);
@@ -58672,6 +59915,48 @@ var mutations = {
   },
   UPDATE_VERTICAL_NAV_MENU_WIDTH: function UPDATE_VERTICAL_NAV_MENU_WIDTH(state, width) {
     state.verticalNavMenuWidth = width;
+  },
+  // Navbar-Vertical
+  ARRANGE_STARRED_PAGES_LIMITED: function ARRANGE_STARRED_PAGES_LIMITED(state, list) {
+    var starredPagesMore = state.starredPages.slice(10);
+    state.starredPages = list.concat(starredPagesMore);
+  },
+  ARRANGE_STARRED_PAGES_MORE: function ARRANGE_STARRED_PAGES_MORE(state, list) {
+    var downToUp = false;
+    var lastItemInStarredLimited = state.starredPages[10];
+    var starredPagesLimited = state.starredPages.slice(0, 10);
+    state.starredPages = starredPagesLimited.concat(list);
+    state.starredPages.slice(0, 10).map(function (i) {
+      if (list.indexOf(i) > -1) downToUp = true;
+    });
+
+    if (!downToUp) {
+      state.starredPages.splice(10, 0, lastItemInStarredLimited);
+    }
+  },
+  TOGGLE_CONTENT_OVERLAY: function TOGGLE_CONTENT_OVERLAY(state, val) {
+    state.bodyOverlay = val;
+  },
+  // VxAutoSuggest
+  UPDATE_STARRED_PAGE: function UPDATE_STARRED_PAGE(state, payload) {
+    // find item index in search list state
+    var index = state.navbarSearchAndPinList['pages'].data.findIndex(function (item) {
+      return item.url == payload.url;
+    }); // update the main list
+
+    state.navbarSearchAndPinList['pages'].data[index].is_bookmarked = payload.val; // if val is true, add it to starred else remove
+
+    if (payload.val) {
+      state.starredPages.push(state.navbarSearchAndPinList['pages'].data[index]);
+    } else {
+      // find item index from starred pages
+      var _index = state.starredPages.findIndex(function (item) {
+        return item.url == payload.url;
+      }); // remove item using index
+
+
+      state.starredPages.splice(_index, 1);
+    }
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (mutations);
@@ -58688,6 +59973,7 @@ var mutations = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _themeConfig_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/../themeConfig.js */ "./resources/js/themeConfig.js");
+/* harmony import */ var _layouts_components_navbar_navbarSearchAndPinList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/layouts/components/navbar/navbarSearchAndPinList */ "./resources/js/src/layouts/components/navbar/navbarSearchAndPinList.js");
 /*=========================================================================================
   File Name: state.js
   Description: Vuex Store - state
@@ -58696,6 +59982,7 @@ __webpack_require__.r(__webpack_exports__);
   Author: Pixinvent
   Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
+
  // *From Auth - Data will be received from auth provider
 
 var userDefaults = {
@@ -58760,7 +60047,12 @@ var state = {
   is_touch_device: is_touch_device(),
   bodyOverlay: false,
   // User info
-  AppActiveUser: getUserInfo()
+  AppActiveUser: getUserInfo(),
+  // Data for the navbar
+  navbarSearchAndPinList: _layouts_components_navbar_navbarSearchAndPinList__WEBPACK_IMPORTED_MODULE_1__["default"],
+  starredPages: _layouts_components_navbar_navbarSearchAndPinList__WEBPACK_IMPORTED_MODULE_1__["default"]['pages'].data.filter(function (page) {
+    return page.is_bookmarked;
+  })
 };
 /* harmony default export */ __webpack_exports__["default"] = (state);
 
