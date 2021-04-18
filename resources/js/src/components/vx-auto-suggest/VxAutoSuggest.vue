@@ -236,7 +236,16 @@ export default {
             } else {
                 this.filteredData = this.initalData;
             }
-        }
+        },
+        filter_grp(grp) {
+            let exactEle = grp.data.filter((item) => {
+                return item[grp.key].toLowerCase().startsWith(this.searchQuery.toLowerCase())
+            })
+            let containEle = grp.data.filter((item) => {
+                return !item[grp.key].toLowerCase().startsWith(this.searchQuery.toLowerCase()) && item[grp.key].toLowerCase().indexOf(this.searchQuery.toLowerCase()) > -1
+            })
+            return exactEle.concat(containEle).slice(0,this.searchLimit)
+        },
     },
     mounted() {
         if (this.autoFocus) this.focusInput();

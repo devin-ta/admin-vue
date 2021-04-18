@@ -10,6 +10,14 @@
                 <vs-spacer />
 
                 <i18n />
+
+                <search-bar />
+
+                <cart-drop-down />
+
+                <notification-drop-down />
+
+                <profile-drop-down />
             </vs-navbar>
         </div>
     </div>
@@ -18,6 +26,11 @@
 <script>
 import Bookmarks from "./components/Bookmarks.vue";
 import I18n from "./components/I18n.vue";
+import SearchBar from "./components/SearchBar.vue";
+import CartDropDown from "./components/CartDropDown.vue";
+import NotificationDropDown from "./components/NotificationDropDown.vue";
+import ProfileDropDown from "./components/ProfileDropDown.vue";
+
 export default {
     name: "the-navbar-vertical",
     props: {
@@ -28,7 +41,11 @@ export default {
     },
     components: {
         Bookmarks,
-        I18n
+        I18n,
+        SearchBar,
+        CartDropDown,
+        NotificationDropDown,
+        ProfileDropDown
     },
     computed: {
         // NAVBAR STYLE

@@ -80,7 +80,7 @@ const state = {
 
     // Data for the navbar
     navbarSearchAndPinList: navbarSearchAndPinList,
-    starredPages: navbarSearchAndPinList['pages'].data.filter((page) => page.is_bookmarked)
+    starredPages: navbarSearchAndPinList['pages'].data.filter((page) => page.is_bookmarked),
 }
 
 export default state
